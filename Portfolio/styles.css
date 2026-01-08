@@ -788,6 +788,41 @@ textarea {
     color: var(--accent);
 }
 
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tool-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.tool-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    color: var(--text-secondary);
+    /* Default color */
+    flex-shrink: 0;
+}
+
+.tool-item:hover .tool-icon {
+    color: var(--accent);
+    /* Deep ocean blue highlight */
+}
+
+.tool-item span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: inherit;
+    white-space: nowrap;
+}
+
 @keyframes marquee {
     0% {
         transform: translateX(0);
