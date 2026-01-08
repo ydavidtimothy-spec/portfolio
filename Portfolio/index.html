@@ -133,196 +133,301 @@
         <section id="works" class="section">
             <div class="container">
                 <h2 class="section-title fade-in-up">Projects</h2>
+
+                <!-- Filter Buttons -->
+                <div class="projects-filter fade-in-up">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="n8n">n8n</button>
+                    <button class="filter-btn" data-filter="make">Make</button>
+                    <button class="filter-btn" data-filter="zapier">Zapier</button>
+                </div>
+
                 <div class="grid projects-grid">
-                    <!-- Project 1: AI Customer Service -->
-                    <div class="project-card fade-in-up">
+                    <!-- n8n Projects -->
+                    <!-- Project 1: AI Customer Service Agent -->
+                    <div class="project-card fade-in-up" data-category="n8n">
                         <div class="project-image">
-                            <!-- Originally project1.webp, checking file copy result, likely ai-customer-service-agent-C3SpdCXM.webp -->
                             <img src="assets/images/ai-customer-service-agent-C3SpdCXM.webp"
-                                alt="AI Customer Support Architecture">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>High volume of manual support tickets leading to long wait times.</p>
-                                    <h4>Solution</h4>
-                                    <p>Context-aware AI agent using n8n & Gemini.</p>
-                                    <h4>Result</h4>
-                                    <p>90% automated response rate; resolution from hours to seconds.</p>
-                                </div>
-                            </div>
+                                alt="AI Customer Service Agent">
                         </div>
                         <div class="project-info">
+                            <div class="card-tags">
+                                <span class="tag">n8n</span><span class="tag">AI Agent</span><span
+                                    class="tag">Gemini</span>
+                            </div>
                             <h3>AI Customer Service Agent</h3>
-                            <span class="tag">n8n</span><span class="tag">Gemini</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: Voice AI -->
-                    <div class="project-card fade-in-up delay-100">
-                        <div class="project-image">
-                            <!-- Originally project2.png, checking file copy result, likely make-retell-voice-ai-DADmKj4A.png -->
-                            <img src="assets/images/make-retell-voice-ai-DADmKj4A.png" alt="Voice AI System">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Manual call handling was resource-intensive and prone to data entry errors.</p>
-                                    <h4>Solution</h4>
-                                    <p>Full-stack voice automation with Make & Retell AI.</p>
-                                    <h4>Result</h4>
-                                    <p>85% reduction in manual handling; 100% CRM data accuracy.</p>
-                                </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Business received high volumes of messages requiring instant, context-aware responses
+                                    24/7, but manual replies were slow and inconsistent.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Built an n8n workflow using webhooks to receive messages, filter and retrieve
+                                    relevant documents, then respond using Google Gemini AI Agent with persistent
+                                    memory.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Achieved 90% automated response rate with human-like conversations, reducing response
+                                    time from hours to seconds.</p>
                             </div>
                         </div>
-                        <div class="project-info">
-                            <h3>End-to-End Voice AI Ecosystem</h3>
-                            <span class="tag">Make</span><span class="tag">Retell AI</span>
-                        </div>
                     </div>
 
-                    <!-- Project 3: Lead Enrichment (Requested by User to use "that photo") -->
-                    <div class="project-card fade-in-up delay-200">
-                        <div class="project-image">
-                            <img src="assets/images/ai-lead-enrichment-DFLJxv40.webp" alt="Lead Enrichment">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Low conversion rates due to generic outreach and slow lead processing.</p>
-                                    <h4>Solution</h4>
-                                    <p>AI-driven enrichment pipeline personalized for each lead.</p>
-                                    <h4>Result</h4>
-                                    <p>40% increase in lead conversion rates.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>AI Lead Enrichment</h3>
-                            <span class="tag">Zapier</span><span class="tag">Firecrawl</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: Content Repurposing -->
-                    <div class="project-card fade-in-up">
-                        <div class="project-image">
-                            <img src="assets/images/content-repurposing-v1.png" alt="Content Repurposing">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Creating content for multiple platforms was time-consuming and inefficient.</p>
-                                    <h4>Solution</h4>
-                                    <p>Automated repurposing workflow for YouTube, LinkedIn, and Twitter.</p>
-                                    <h4>Result</h4>
-                                    <p>Increased content output by 7x with zero extra effort.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Content Repurposing Engine</h3>
-                            <span class="tag">Zapier</span><span class="tag">OpenAI</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 5: Auto YouTube Shorts -->
-                    <div class="project-card fade-in-up delay-100">
+                    <!-- Project 5: Auto YouTube Shorts (n8n) -->
+                    <div class="project-card fade-in-up" data-category="n8n">
                         <div class="project-image">
                             <img src="assets/images/auto-youtube-shorts-DlBD9La4.webp" alt="Auto YouTube Shorts">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Video editing and captioning took 4+ hours per video.</p>
-                                    <h4>Solution</h4>
-                                    <p>Fully automated Shorts creation pipeline from script to upload.</p>
-                                    <h4>Result</h4>
-                                    <p>Generated 15 videos/week automatically; 1M+ views gained.</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Auto YouTube Shorts Generator</h3>
-                            <span class="tag">n8n</span><span class="tag">Video AI</span>
+                            <div class="card-tags">
+                                <span class="tag">n8n</span><span class="tag">Video Automation</span><span
+                                    class="tag">AI</span>
+                            </div>
+                            <h3>Auto YouTube Shorts Creator</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Creating short-form video content for multiple platforms was time-consuming and
+                                    repetitive.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Developed an n8n automation that generates prompts, creates videos via AI, and
+                                    publishes to YouTube and Facebook automatically.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Increased video output from 2 to 15 videos per week while maintaining quality and
+                                    brand consistency.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 6: Marketing Sales Funnel -->
-                    <div class="project-card fade-in-up delay-200">
+                    <!-- Project 6: Marketing Sales Funnel (n8n) -->
+                    <div class="project-card fade-in-up" data-category="n8n">
                         <div class="project-image">
                             <img src="assets/images/marketing-sales-funnel-CchYD7WT.png" alt="Marketing Sales Funnel">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Leads were falling through the cracks due to disjointed tools.</p>
-                                    <h4>Solution</h4>
-                                    <p>Integrated sales funnel connecting CRM, Email, and Ads.</p>
-                                    <h4>Result</h4>
-                                    <p>Seamless lead journey; 25% boost in ROI.</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Unified Sales Funnel</h3>
-                            <span class="tag">n8n</span><span class="tag">HubSpot</span>
+                            <div class="card-tags">
+                                <span class="tag">n8n</span><span class="tag">CRM</span><span class="tag">Email</span>
+                            </div>
+                            <h3>Marketing Sales Funnel Automation</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Lead follow-up was inconsistent, with many leads falling through the cracks due to
+                                    manual processes.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Created an n8n workflow that automatically processes leads, sends follow-up emails,
+                                    and assigns agents based on priority levels.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Increased lead conversion by 40% through consistent automated follow-ups and proper
+                                    lead routing.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 7: Social Media Scheduler -->
-                    <div class="project-card fade-in-up">
+                    <!-- Project 7: Social Media Scheduler (n8n) -->
+                    <div class="project-card fade-in-up" data-category="n8n">
                         <div class="project-image">
                             <img src="assets/images/social-media-scheduler-B4HF3A-j.webp" alt="Social Media Scheduler">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Manual posting disrupted daily productivity.</p>
-                                    <h4>Solution</h4>
-                                    <p>Custom scheduling automation with approval workflows.</p>
-                                    <h4>Result</h4>
-                                    <p>Saved 10 hours/week; consistent posting schedule achieved.</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Smart Social Scheduler</h3>
-                            <span class="tag">n8n</span><span class="tag">Notion</span>
+                            <div class="card-tags">
+                                <span class="tag">n8n</span><span class="tag">Social Media</span><span class="tag">AI
+                                    Agent</span>
+                            </div>
+                            <h3>Social Media Content Scheduler</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Scheduling and posting content across multiple social platforms required manual
+                                    intervention.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Built an automation that downloads files from Google Drive, processes them through an
+                                    AI agent, and posts to Facebook with tracking.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Reduced content scheduling time by 80% and eliminated missed posting schedules.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 8: Inbound CRM Caller -->
-                    <div class="project-card fade-in-up delay-100">
+                    <!-- Make Projects -->
+                    <!-- Project 2: Voice AI (Make) -->
+                    <div class="project-card fade-in-up" data-category="make">
+                        <div class="project-image">
+                            <img src="assets/images/make-retell-voice-ai-DADmKj4A.png" alt="Voice AI System">
+                        </div>
+                        <div class="project-info">
+                            <div class="card-tags">
+                                <span class="tag">Make</span><span class="tag">Retell AI</span><span
+                                    class="tag">CRM</span>
+                            </div>
+                            <h3>End-to-End AI Voice Agent & CRM System</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Businesses struggled to handle inbound calls efficiently while keeping CRM records
+                                    updated, validating user existence workflows — all manually.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Built a comprehensive Make automation ecosystem combining: (1) User Validation, (2)
+                                    CRM Pipeline updates, and (3) Retell AI Voice Agent.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Achieved real-time data sync, reduced manual call handling by 85%, and ensured 100%
+                                    CRM data accuracy.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Inbound CRM Caller (Make) -->
+                    <div class="project-card fade-in-up" data-category="make">
                         <div class="project-image">
                             <img src="assets/images/make-crm-inbound-caller-DMUPuVre.png" alt="Inbound CRM Caller">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>Inbound leads were not being logged instantly into the CRM.</p>
-                                    <h4>Solution</h4>
-                                    <p>Real-time caller logging and data enrichment.</p>
-                                    <h4>Result</h4>
-                                    <p>Zero data loss; immediate sales team notification.</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Inbound CRM Caller</h3>
-                            <span class="tag">Make</span><span class="tag">Pipedrive</span>
+                            <div class="card-tags">
+                                <span class="tag">Make</span><span class="tag">HubSpot</span><span
+                                    class="tag">Monday.com</span>
+                            </div>
+                            <h3>CRM Sync Automation</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Lead data from form submissions wasn't being synced across CRM platforms
+                                    consistently.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Built a Make automation that watches HubSpot form submissions, creates items in
+                                    Monday.com, and sends confirmation emails via Gmail.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Achieved real-time CRM synchronization across platforms with zero manual data entry.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 9: User Existence Validator -->
-                    <div class="project-card fade-in-up delay-200">
+                    <!-- Project 9: User Existence Validator (Make) -->
+                    <div class="project-card fade-in-up" data-category="make">
                         <div class="project-image">
                             <img src="assets/images/make-user-existence-CRaRI7mI.png" alt="User Existence Validator">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h4>Problem</h4>
-                                    <p>High rate of fake user registrations spamming the system.</p>
-                                    <h4>Solution</h4>
-                                    <p>Automated verification workflow checking multiple databases.</p>
-                                    <h4>Result</h4>
-                                    <p>Eliminated 99% of spam accounts automatically.</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>User Verification System</h3>
-                            <span class="tag">Make</span><span class="tag">API</span>
+                            <div class="card-tags">
+                                <span class="tag">Make</span><span class="tag">Gemini AI</span><span class="tag">Google
+                                    Sheets</span>
+                            </div>
+                            <h3>AI Data Capture Pipeline</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Extracting and organizing data from email attachments was tedious and error-prone.
+                                </p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Developed a Gmail-triggered workflow using Google Gemini AI to analyze files, extract
+                                    data to Google Sheets, store in Drive, and send summary reports.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Automated data extraction saving 15+ hours weekly with 98% accuracy.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zapier Projects -->
+                    <!-- Project 3: Lead Enrichment (Zapier) -->
+                    <div class="project-card fade-in-up" data-category="zapier">
+                        <div class="project-image">
+                            <img src="assets/images/ai-lead-enrichment-DFLJxv40.webp" alt="Lead Enrichment">
+                        </div>
+                        <div class="project-info">
+                            <div class="card-tags">
+                                <span class="tag">Zapier</span><span class="tag">Data</span><span
+                                    class="tag">Webhook</span>
+                            </div>
+                            <h3>Leads Enrichment Pipeline</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Lead data was often incomplete, requiring manual research for each prospect.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Developed a pipeline using webhooks to search domains, retrieve company details,
+                                    update spreadsheets, and notify via Slack.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Enriched 500+ leads per month automatically, saving 20+ hours of manual research.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Content Repurposing (Zapier) -->
+                    <div class="project-card fade-in-up" data-category="zapier">
+                        <div class="project-image">
+                            <img src="assets/images/content-repurposing-v1.png" alt="Content Repurposing">
+                        </div>
+                        <div class="project-info">
+                            <div class="card-tags">
+                                <span class="tag">Zapier</span><span class="tag">AI</span><span
+                                    class="tag">Content</span>
+                            </div>
+                            <h3>Content Repurposing Automation</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Repurposing long-form content into blog posts and social media was manual and
+                                    inconsistent.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Created a Zapier automation that transcribes files, generates blog posts using AI,
+                                    and distributes to Facebook and Instagram.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Reduced content repurposing time from 4 hours to 15 minutes per piece of content.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zapier Additional (Lead Actions) -->
+                    <div class="project-card fade-in-up" data-category="zapier">
+                        <div class="project-image">
+                            <img src="assets/images/leads-enrichment-v1.png" alt="Lead Actions Automation">
+                        </div>
+                        <div class="project-info">
+                            <div class="card-tags">
+                                <span class="tag">Zapier</span><span class="tag">CRM</span><span
+                                    class="tag">Email</span>
+                            </div>
+                            <h3>Lead Actions Automation</h3>
+                            <div class="psr-block">
+                                <span class="psr-label label-problem">Problem</span>
+                                <p>Different lead stages required different actions, but tracking and executing these
+                                    manually was error-prone.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-solution">Solution</span>
+                                <p>Built a Zapier workflow that monitors Asana tasks, splits leads by status, and
+                                    triggers appropriate email sequences and folder creation.</p>
+                            </div>
+                            <div class="psr-block">
+                                <span class="psr-label label-result">Result</span>
+                                <p>Eliminated manual lead management errors and ensured 100% follow-up compliance.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
