@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Animations using Intersection Observer
+    // Scroll Animations using Intersection Observer with Staggering
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -7,11 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
+        // Group entries by parent to handle staggering
+        const parentGroups = new Map();
+
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Only animate once
+                const parent = entry.target.parentElement;
+                if (!parentGroups.has(parent)) {
+                    parentGroups.set(parent, []);
+                }
+                parentGroups.get(parent).push(entry.target);
+                observer.unobserve(entry.target);
             }
+        });
+
+        // Apply animations with delay for each group
+        parentGroups.forEach((targets) => {
+            // Sort targets by DOM order to ensure sequential animation
+            targets.sort((a, b) => {
+                return Array.from(a.parentElement.children).indexOf(a) - Array.from(b.parentElement.children).indexOf(b);
+            });
+
+            targets.forEach((target, index) => {
+                setTimeout(() => {
+                    target.classList.add('visible');
+                }, index * 100); // 100ms stagger delay
+            });
         });
     }, observerOptions);
 
