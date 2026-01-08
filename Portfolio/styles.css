@@ -681,6 +681,133 @@ textarea {
     transition-delay: 0.3s;
 }
 
+/* Services Header */
+.services-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.eyebrow-center {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    background: rgba(56, 189, 248, 0.1);
+    border-radius: 100px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 16px auto 0;
+}
+
+/* Service Grid 6 */
+.services-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(56, 189, 248, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--accent);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    background-color: var(--accent);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Tools Marquee */
+.tools-section {
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+.tools-label {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.tools-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 60px;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee-content span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
+.marquee-content span:hover {
+    color: var(--accent);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Calendly Wrapper */
+.calendly-wrapper {
+    margin-top: 40px;
+}
+
+.btn-large {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     h1 {
