@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Loading Screen with Typewriter Effect
+    const loaderScreen = document.querySelector('.loader-screen');
+    const typewriter = document.querySelector('.typewriter');
+    
+    if (loaderScreen && typewriter) {
+        const brandName = 'david.yoro';
+        const accentStart = 5; // Index where ".yoro" starts
+        let charIndex = 0;
+
+        const typeInterval = setInterval(() => {
+            if (charIndex < brandName.length) {
+                const char = brandName[charIndex];
+                if (charIndex >= accentStart) {
+                    // Add accent color for ".yoro"
+                    if (charIndex === accentStart) {
+                        typewriter.innerHTML += '<span class="accent">';
+                    }
+                    typewriter.innerHTML += char;
+                    if (charIndex === brandName.length - 1) {
+                        typewriter.innerHTML += '</span>';
+                    }
+                } else {
+                    typewriter.innerHTML += char;
+                }
+                charIndex++;
+            } else {
+                clearInterval(typeInterval);
+                // Hide cursor after typing completes
+                const cursor = document.querySelector('.cursor');
+                if (cursor) cursor.style.display = 'none';
+                
+                // Fade out loader after a brief pause
+                setTimeout(() => {
+                    loaderScreen.classList.add('hidden');
+                }, 600);
+            }
+        }, 120); // Typing speed: 120ms per character
+    }
+
     // Scroll Animations using Intersection Observer with Staggering
     const observerOptions = {
         root: null,
@@ -127,4 +166,118 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Rotating Words Animation
+    const rotatingWords = document.querySelector('.rotating-words');
+    if (rotatingWords) {
+        const words = rotatingWords.querySelectorAll('.word');
+        let currentIndex = 0;
+
+        setInterval(() => {
+            words[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % words.length;
+            words[currentIndex].classList.add('active');
+        }, 3000); // Change word every 3 seconds
+    }
+
+    // Cursor Glow Effect
+    const cursorGlow = document.querySelector('.cursor-glow');
+    if (cursorGlow) {
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Show glow on interactive elements
+        const interactiveElements = document.querySelectorAll('.card, .project-card, .btn-cta, .contact-pill');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorGlow.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursorGlow.classList.remove('active'));
+        });
+    }
+
+    // Magnetic Button Effect
+    const magneticButtons = document.querySelectorAll('.btn-cta, .btn-primary');
+    magneticButtons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+
+    // Scroll Progress Bar
+    const scrollProgress = document.querySelector('.scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+    }
+
+    // Parallax Effect on Hero Background
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            // Subtle parallax on hero - moves slower than scroll
+            heroSection.style.backgroundPositionY = scrollY * 0.3 + 'px';
+        });
+    }
+
+    // Floating CTA Button - Show after scrolling past hero
+    const floatingCta = document.querySelector('.floating-cta');
+    if (floatingCta && heroSection) {
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            if (window.scrollY > heroBottom) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+        });
+    }
+
+    // Exit Intent Popup
+    const exitPopup = document.getElementById('exitPopup');
+    const exitClose = document.querySelector('.exit-popup-close');
+    let hasShownPopup = false;
+
+    if (exitPopup) {
+        // Show on mouse leaving viewport (desktop only)
+        document.addEventListener('mouseout', (e) => {
+            if (!hasShownPopup && e.clientY < 10 && !e.relatedTarget) {
+                exitPopup.classList.add('active');
+                hasShownPopup = true;
+            }
+        });
+
+        // Close button
+        if (exitClose) {
+            exitClose.addEventListener('click', () => {
+                exitPopup.classList.remove('active');
+            });
+        }
+
+        // Close on backdrop click
+        exitPopup.addEventListener('click', (e) => {
+            if (e.target === exitPopup) {
+                exitPopup.classList.remove('active');
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                exitPopup.classList.remove('active');
+            }
+        });
+    }
 });
