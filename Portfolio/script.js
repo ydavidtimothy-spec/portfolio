@@ -280,4 +280,62 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ========================================
+    // EXIT INTENT FORM - GHL WEBHOOK INTEGRATION
+    // ========================================
+    // IMPORTANT: Replace the URL below with your GoHighLevel webhook URL
+    const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/EAtoIMKLPmk5lNFYiA3n/webhook-trigger/04b3d86c-0e69-4b55-b31e-6143ecec072d'; // <-- LINE 294: PUT YOUR GHL WEBHOOK HERE
+    
+    const exitForm = document.getElementById('exitForm');
+    const exitEmailInput = document.getElementById('exitEmail');
+    
+    if (exitForm && exitEmailInput) {
+        exitForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = exitEmailInput.value.trim();
+            if (!email) return;
+            
+            // Disable form while submitting
+            const submitBtn = exitForm.querySelector('.exit-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Send to GHL Webhook
+                await fetch(GHL_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        source: 'Portfolio Exit Intent',
+                        lead_magnet: 'Automation Checklist',
+                        timestamp: new Date().toISOString()
+                    }),
+                    mode: 'no-cors' // GHL webhooks may not return CORS headers
+                });
+                
+                // Success - show thank you message
+                exitForm.innerHTML = '<p style="color: #38bdf8; font-weight: 600;">✓ Check your email for the checklist!</p>';
+                
+                // Close popup after 2 seconds
+                setTimeout(() => {
+                    exitPopup.classList.remove('active');
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Webhook error:', error);
+                submitBtn.textContent = 'Error - Try Again';
+                submitBtn.disabled = false;
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                }, 2000);
+            }
+        });
+    }
 });
