@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-Point Automation Checklist | David Yoro</title>
+    
+    <!-- Fonts & Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Specific Checklist Overrides */
+        body {
+            padding-top: 120px; /* Space for fixed header */
+            min-height: 100vh;
+        }
+
+        .checklist-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px 100px; /* Bottom padding for footer */
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        .page-header .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Checklist Item Cards */
+        .checklist-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .checklist-item:hover {
+             border-color: var(--accent);
+             transform: translateY(-2px);
+             box-shadow: 0 10px 30px -10px var(--shadow-color);
+             background-color: var(--card-bg-hover);
+        }
+        
+        /* Checked State - soothing/dismissed vibe */
+        .checklist-item.checked {
+            opacity: 0.5;
+            filter: grayscale(0.8);
+            border-color: transparent;
+            background-color: rgba(15, 23, 42, 0.2);
+            transform: scale(0.98);
+        }
+        
+        [data-theme="light"] .checklist-item.checked {
+             background-color: rgba(203, 213, 225, 0.2);
+        }
+
+        .checklist-item.checked:hover {
+            transform: scale(0.98); /* Don't bounce back if checked */
+            cursor: default;
+        }
+
+        .checkbox-custom {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            margin-top: 4px;
+        }
+
+        .checklist-item:hover .checkbox-custom {
+            border-color: var(--accent);
+        }
+
+        .checklist-item.checked .checkbox-custom {
+            background-color: #10b981; /* Green-500 for success */
+            border-color: #10b981;
+            transform: scale(1.1);
+        }
+        
+        .checkbox-custom::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            display: none;
+        }
+        
+        .checklist-item.checked .checkbox-custom::after {
+            display: block;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .badge {
+             background: rgba(56, 189, 248, 0.1);
+             color: var(--accent);
+             padding: 4px 10px;
+             border-radius: 100px;
+             font-size: 0.75rem;
+             font-weight: 600;
+             border: 1px solid rgba(56, 189, 248, 0.2);
+             display: inline-block;
+             margin-bottom: 8px;
+             text-transform: uppercase;
+             letter-spacing: 0.05em;
+        }
+        
+        .item-content h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+        
+        .item-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Result Footer */
+        .result-footer {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--header-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--accent);
+            padding: 16px 32px;
+            border-radius: 100px;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 999;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 90%;
+            max-width: 500px;
+            justify-content: space-between;
+        }
+
+        .result-footer.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .score-display {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        .score-display span {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            .checklist-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                david<span class="logo-accent">.yoro</span>
+            </a>
+            <nav class="nav">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+                    <!-- Sun Icon (visible in dark mode) -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <!-- Moon Icon (visible in light mode) -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                
+                <a href="index.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 10px 20px;">Back to Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="checklist-container">
+        
+        <div class="page-header fade-in-up">
+            <h1>The Automation Audit</h1>
+            <p class="subtitle">Stop wasting time. If you do <strong>3+</strong> of these manually, we need to talk.</p>
+        </div>
+
+        <div class="checklist-grid fade-in-up delay-100">
+            <!-- Item 1 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Leads</span>
+                    <h3>Copy-Pasting Leads to Excel/CRM</h3>
+                    <p>Are you manually typing contact info from emails into a spreadsheet or CRM?</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Sales</span>
+                    <h3>Manually Calculating Quotes</h3>
+                    <p>Do you open a calculator or spreadsheet every time a client asks for a price?</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Follow-up</span>
+                    <h3>"Just Checking In" Emails</h3>
+                    <p>Typing out the same follow-up email to ghosting clients every week?</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Admin</span>
+                    <h3>Chasing Invoices</h3>
+                    <p>Sending "Payment Reminder" emails manually when valid invoices go unpaid?</p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Onboarding</span>
+                    <h3>Creating Folders & Contracts</h3>
+                    <p>Manually creating Google Drive folders and sending HelloSign/PandaDoc contracts for new clients?</p>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Social</span>
+                    <h3>Posting Content Natively</h3>
+                    <p>Logging into LinkedIn, then FB, then IG to post the same image/text manually?</p>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Meetings</span>
+                    <h3>"When are you free?" Email Tag</h3>
+                    <p>Going back and forth 4 times just to find a meeting slot instead of using a booking link?</p>
+                </div>
+            </div>
+
+             <!-- Item 8 -->
+             <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Research</span>
+                    <h3>Googling Prospects</h3>
+                    <p>Manually searching a lead's name/company to find their LinkedIn or website before a call?</p>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Support</span>
+                    <h3>Answering FAQ Emails</h3>
+                    <p>Replying to "What are your hours?" or "Pricing?" with a manually typed response?</p>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="checklist-item" onclick="toggleItem(this)">
+                <div class="checkbox-custom"></div>
+                <div class="item-content">
+                    <span class="badge">Reporting</span>
+                    <h3>Copy-Pasting Weekly Stats</h3>
+                    <p>Gathering numbers from FB Ads, Stripe, and Google Analytics into a manual report?</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Result Footer -->
+    <div class="result-footer" id="resultFooter">
+        <div class="score-display">
+            Selected: <span id="score">0</span>/10
+        </div>
+        <a href="index.html#contact" class="btn btn-cta">Let's Automate This</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        function toggleItem(element) {
+            // Toggle checked class
+            element.classList.toggle('checked');
+            
+            // Calculate Score
+            const checkedCount = document.querySelectorAll('.checklist-item.checked').length;
+            const scoreEl = document.getElementById('score');
+            const footer = document.getElementById('resultFooter');
+            
+            // Update Score
+            scoreEl.textContent = checkedCount;
+            
+            // Show/Hide Footer based on interaction
+            if (checkedCount > 0) {
+                footer.classList.add('visible');
+            } else {
+                footer.classList.remove('visible');
+            }
+            
+            // Optional: Dynamic Text update based on score
+            // Not strictly necessary but adds a nice touch
+        }
+    </script>
+</body>
+</html>

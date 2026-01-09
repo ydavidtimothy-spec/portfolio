@@ -11,47 +11,49 @@
 }
 
 /* Dark Theme (Default) */
+/* Dark Theme (Default) - Optimized for reduced eye strain / Premium Feel */
 [data-theme="dark"], :root {
-    --bg-color: #020617;
-    --bg-gradient-1: #1e3a8a;
-    --bg-gradient-2: #0c4a6e;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-bg-hover: rgba(255, 255, 255, 0.05);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent: #38bdf8;
-    --accent-glow: rgba(56, 189, 248, 0.5);
-    --border: rgba(255, 255, 255, 0.1);
-    --header-bg: rgba(3, 0, 20, 0.8);
-    --loader-bg: #0a0a0a;
-    --loader-text: #ffffff;
-    --loader-subtitle: #525252;
-    --glow-color-1: rgba(56, 189, 248, 0.1);
-    --glow-color-2: rgba(59, 130, 246, 0.08);
-    --nav-overlay-bg: rgba(2, 6, 23, 0.95);
-    --shadow-color: rgba(0, 0, 0, 0.5);
+    --bg-color: #0f172a; /* Slate-900: Richer than pitch black, softer than gray */
+    --bg-gradient-1: #1e3a8a; /* Blue-900 */
+    --bg-gradient-2: #1e293b; /* Slate-800 */
+    --card-bg: rgba(30, 41, 59, 0.4); /* Glassy Slate */
+    --card-bg-hover: rgba(30, 41, 59, 0.6);
+    --text-primary: #e2e8f0; /* Slate-200: Softer white to prevent halation */
+    --text-secondary: #94a3b8; /* Slate-400: Balanced contrast */
+    --accent: #38bdf8; /* Sky-400 */
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    --border: rgba(148, 163, 184, 0.1); /* Subtle border */
+    --header-bg: rgba(15, 23, 42, 0.85); /* Slightly more opaque for focus */
+    --loader-bg: #0f172a;
+    --loader-text: #e2e8f0;
+    --loader-subtitle: #64748b;
+    --glow-color-1: rgba(56, 189, 248, 0.08); /* Reduced intensity */
+    --glow-color-2: rgba(59, 130, 246, 0.06);
+    --nav-overlay-bg: rgba(15, 23, 42, 0.98);
+    --shadow-color: rgba(0, 0, 0, 0.6);
 }
 
 /* Light Theme */
+/* Light Theme - Clean, Airy, Low Glare */
 [data-theme="light"] {
-    --bg-color: #f8fafc;
-    --bg-gradient-1: #e0f2fe;
-    --bg-gradient-2: #dbeafe;
-    --card-bg: rgba(255, 255, 255, 0.8);
-    --card-bg-hover: rgba(255, 255, 255, 0.95);
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --accent: #0284c7;
-    --accent-glow: rgba(2, 132, 199, 0.3);
-    --border: rgba(15, 23, 42, 0.1);
-    --header-bg: rgba(248, 250, 252, 0.9);
+    --bg-color: #f1f5f9; /* Slate-100: Not pure white, easier on eyes */
+    --bg-gradient-1: #e0f2fe; /* Sky-100 */
+    --bg-gradient-2: #e2e8f0; /* Slate-200 */
+    --card-bg: rgba(255, 255, 255, 0.7); /* Frosted Glass */
+    --card-bg-hover: rgba(255, 255, 255, 0.9);
+    --text-primary: #1e293b; /* Slate-800: Strong but not pitch black */
+    --text-secondary: #475569; /* Slate-600: Good readability */
+    --accent: #0284c7; /* Sky-600 */
+    --accent-glow: rgba(2, 132, 199, 0.2);
+    --border: rgba(30, 41, 59, 0.1); /* Slate border */
+    --header-bg: rgba(241, 245, 249, 0.9);
     --loader-bg: #f1f5f9;
-    --loader-text: #0f172a;
+    --loader-text: #1e293b;
     --loader-subtitle: #64748b;
-    --glow-color-1: rgba(56, 189, 248, 0.15);
-    --glow-color-2: rgba(59, 130, 246, 0.1);
-    --nav-overlay-bg: rgba(248, 250, 252, 0.98);
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glow-color-1: rgba(56, 189, 248, 0.15); /* Soft Blue */
+    --glow-color-2: rgba(94, 234, 212, 0.1); /* Teal hint */
+    --nav-overlay-bg: rgba(241, 245, 249, 0.98);
+    --shadow-color: rgba(148, 163, 184, 0.2);
 }
 
 /* Cursor Glow Effect */
@@ -143,8 +145,8 @@
 
 .cursor {
     color: #38bdf8;
-    font-weight: 400;
-    animation: blink 0.8s infinite;
+    font-weight: 300;
+    animation: blink 1.2s infinite; /* Slower blink */
 }
 
 .loader-subtitle {
@@ -175,12 +177,12 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-main);
-    line-height: 1.6;
+    line-height: 1.8; /* Increased line-height for better readability (ADHD friendly) */
     overflow-x: hidden;
     position: relative;
-    /* Dynamic Gradient Background */
-    background: radial-gradient(circle at top left, var(--bg-gradient-1) 0%, transparent 40%),
-        radial-gradient(circle at bottom right, var(--bg-gradient-2) 0%, transparent 40%),
+    /* Dynamic Gradient Background - Softer transitions */
+    background: radial-gradient(circle at top left, var(--bg-gradient-1) 0%, transparent 50%),
+        radial-gradient(circle at bottom right, var(--bg-gradient-2) 0%, transparent 50%),
         var(--bg-color);
     background-attachment: fixed;
     transition: var(--theme-transition);
@@ -197,7 +199,7 @@ body::before {
     background: radial-gradient(circle, var(--glow-color-1) 0%, transparent 70%);
     filter: blur(80px);
     z-index: -1;
-    animation: pulseGlow 8s ease-in-out infinite alternate;
+    animation: pulseGlow 12s ease-in-out infinite alternate; /* Slower animation for calmness */
     transition: var(--theme-transition);
 }
 
@@ -211,7 +213,7 @@ body::after {
     background: radial-gradient(circle, var(--glow-color-2) 0%, transparent 70%);
     filter: blur(100px);
     z-index: -1;
-    animation: pulseGlow 10s ease-in-out infinite alternate-reverse;
+    animation: pulseGlow 15s ease-in-out infinite alternate-reverse; /* Slower animation for calmness */
     transition: var(--theme-transition);
 }
 
@@ -359,13 +361,15 @@ h2.section-title {
 .btn-primary {
     background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
     color: #ffffff;
-    box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); /* Softer shadow */
     border: none;
+    letter-spacing: 0.02em; /* Better legibility */
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.5);
+    transform: translateY(-2px); /* Reduced movement */
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+    filter: brightness(1.05);
 }
 
 .btn-secondary {
@@ -408,18 +412,24 @@ h2.section-title {
     font-weight: 700;
     letter-spacing: -0.03em;
     color: var(--text-primary);
-    /* White/Light Gray */
     text-decoration: none;
     transition: opacity 0.3s ease;
+    display: inline-flex;
+    align-items: center;
 }
 
 .logo:hover {
-    opacity: 0.9;
+    opacity: 1; /* Keep fully visible */
 }
 
 .logo-accent {
-    color: #f97316;
-    /* Brand Orange */
+    color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+.logo:hover .logo-accent {
+    text-shadow: 0 0 12px var(--accent-glow), 0 0 24px var(--accent);
+    filter: brightness(1.2);
 }
 
 .nav {
@@ -537,7 +547,9 @@ h2.section-title {
     color: var(--accent);
 }
 
-/* Mobile Responsive Header */
+/* ... (Existing media queries) ... */
+
+/* Mobile Nav Overlay Improvements */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -548,7 +560,6 @@ h2.section-title {
         display: none;
     }
 
-    /* Mobile Nav Overlay */
     .nav.nav-active .nav-list {
         display: flex;
         flex-direction: column;
@@ -558,13 +569,14 @@ h2.section-title {
         width: 100%;
         height: 100vh;
         background-color: var(--nav-overlay-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(25px); /* Stronger blur for focus */
+        -webkit-backdrop-filter: blur(25px);
         align-items: center;
         justify-content: center;
-        gap: 40px;
+        gap: 32px;
         z-index: 1000;
         animation: fadeIn 0.3s ease;
+        padding-bottom: 80px; /* Space for the button */
     }
 
     .nav.nav-active .btn-cta {
@@ -576,26 +588,21 @@ h2.section-title {
         z-index: 1001;
         animation: fadeIn 0.3s ease 0.1s forwards;
         opacity: 0;
+        width: 80%; /* Wider button on mobile */
+        text-align: center;
+        padding: 16px;
     }
 
     .nav.nav-active .nav-list li {
         opacity: 0;
-        animation: slideUp 0.4s ease forwards;
+        animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Smoother easing */
     }
-
-    .nav.nav-active .nav-list li:nth-child(1) { animation-delay: 0.1s; }
-    .nav.nav-active .nav-list li:nth-child(2) { animation-delay: 0.2s; }
-    .nav.nav-active .nav-list li:nth-child(3) { animation-delay: 0.3s; }
-    .nav.nav-active .nav-list li:nth-child(4) { animation-delay: 0.4s; }
-    .nav.nav-active .nav-list li:nth-child(5) { animation-delay: 0.5s; }
 
     .nav.nav-active .nav-list a {
-        font-size: 1.5rem;
+        font-size: 1.75rem; /* Larger touch targets */
+        font-weight: 600;
         color: var(--text-primary);
-    }
-
-    .nav.nav-active .nav-list a:hover {
-        color: #06b6d4;
+        letter-spacing: -0.02em;
     }
 }
 
@@ -684,19 +691,20 @@ h2.section-title {
 .card {
     background-color: var(--card-bg);
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 24px; /* Slightly more rounded for friendly feel */
     border: 1px solid var(--border);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother, less snappy transition */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Subtle initial shadow */
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5),
-                0 0 20px rgba(56, 189, 248, 0.1);
-    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px); /* Reduced movement */
+    border-color: var(--accent-glow);
+    box-shadow: 0 20px 40px -10px var(--shadow-color),
+                0 0 20px var(--glow-color-1);
+    background-color: var(--card-bg-hover);
 }
 
 .card h3 {
