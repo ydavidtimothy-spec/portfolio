@@ -258,37 +258,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll Progress Bar
     const scrollProgress = document.querySelector('.scroll-progress');
-    if (scrollProgress) {
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            scrollProgress.style.width = scrollPercent + '%';
-        });
-    }
-
+    
     // Parallax Effect on Hero Background
     const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            // Subtle parallax on hero - moves slower than scroll
-            heroSection.style.backgroundPositionY = scrollY * 0.3 + 'px';
-        });
-    }
-
+    
     // Floating CTA Button - Show after scrolling past hero
     const floatingCta = document.querySelector('.floating-cta');
-    if (floatingCta && heroSection) {
-        window.addEventListener('scroll', () => {
-            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-            if (window.scrollY > heroBottom) {
-                floatingCta.classList.add('visible');
-            } else {
-                floatingCta.classList.remove('visible');
-            }
-        });
-    }
+
+    // Consolidated Scroll Listener with RequestAnimationFrame
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+
+                // 1. Scroll Progress
+                if (scrollProgress) {
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop => scrollTop / docHeight * 100)(scrollY); // Calc inside
+                    scrollProgress.style.width = scrollPercent + '%';
+                }
+
+                // 2. Parallax Hero
+                if (heroSection) {
+                    heroSection.style.backgroundPositionY = scrollY * 0.3 + 'px';
+                }
+
+                // 3. Floating CTA
+                if (floatingCta && heroSection) {
+                    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                    if (scrollY > heroBottom) {
+                        floatingCta.classList.add('visible');
+                    } else {
+                        floatingCta.classList.remove('visible');
+                    }
+                }
+
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    });
 
     // Exit Intent Popup
     const exitPopup = document.getElementById('exitPopup');
@@ -382,4 +392,103 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ========================================
+    // MOBILE CALENDLY DRAWER LOGIC
+    // ========================================
+    const mobileBookBtn = document.getElementById('mobile-book-btn');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const calendlyDrawer = document.getElementById('calendlyDrawer');
+    const drawerCloseBtn = document.querySelector('.drawer-close');
+    const drawerContent = document.getElementById('drawerContent');
+    const calendlyWidget = document.getElementById('calendly-embed-container');
+    const drawerHandle = document.querySelector('.drawer-handle-bar');
+    
+    // Track original parent to move it back if needed
+    let originalWidgetParent = calendlyWidget ? calendlyWidget.parentElement : null;
+    
+    function openDrawer() {
+        if (!calendlyDrawer || !calendlyWidget) return;
+        
+        // Move widget to drawer
+        drawerContent.appendChild(calendlyWidget);
+        
+        // Show drawer
+        drawerOverlay.classList.add('active');
+        calendlyDrawer.classList.add('active');
+        document.body.classList.add('drawer-open');
+    }
+    
+    function closeDrawer() {
+        if (!calendlyDrawer) return;
+        
+        // Hide drawer
+        drawerOverlay.classList.remove('active');
+        calendlyDrawer.classList.remove('active');
+        document.body.classList.remove('drawer-open');
+        
+        // Move widget back after animation (timeout matching CSS transition)
+        setTimeout(() => {
+            if (originalWidgetParent && calendlyWidget) {
+                originalWidgetParent.appendChild(calendlyWidget);
+            }
+        }, 500);
+    }
+    
+    if (mobileBookBtn) {
+        mobileBookBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openDrawer();
+        });
+    }
+    
+    if (drawerCloseBtn) {
+        drawerCloseBtn.addEventListener('click', closeDrawer);
+    }
+    
+    if (drawerOverlay) {
+        drawerOverlay.addEventListener('click', closeDrawer);
+    }
+    
+    // Drag to close logic (Simple version)
+    let startY = 0;
+    let currentY = 0;
+    
+    if (drawerHandle && calendlyDrawer) {
+        drawerHandle.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        drawerHandle.addEventListener('touchmove', (e) => {
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+            if (diff > 0) {
+                // Dragging down - visuals
+                calendlyDrawer.style.transform = `translateY(${diff}px)`;
+            }
+        }, { passive: true });
+        
+        drawerHandle.addEventListener('touchend', (e) => {
+            const diff = currentY - startY;
+            // If dragged down more than 100px, close
+            if (diff > 100) {
+                calendlyDrawer.style.transform = ''; // Reset inline style
+                closeDrawer();
+            } else {
+                // Bounce back
+                calendlyDrawer.style.transform = '';
+            }
+            startY = 0;
+            currentY = 0;
+        });
+    }
+
+    // Handle Resize - Close drawer if resizing to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 640 && calendlyDrawer && calendlyDrawer.classList.contains('active')) {
+            closeDrawer();
+        }
+    });
+
 });
