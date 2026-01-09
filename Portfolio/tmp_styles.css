@@ -1,0 +1,58 @@
+
+/* Calendly Skeleton */
+.calendly-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Let clicks pass through if needed later, but mainly for display */
+}
+
+.calendly-skeleton.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.skeleton-pulse {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+    margin-bottom: 16px;
+}
+
+.calendly-skeleton p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    animation: pulseText 2s infinite ease-in-out;
+}
+
+@keyframes skeletonPulse {
+    0% { transform: scale(0.8); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.6; }
+    100% { transform: scale(0.8); opacity: 0.3; }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.calendly-container {
+    position: relative; /* Context for absolute skeleton */
+    min-height: 650px; /* Ensure space is held */
+}

@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.querySelector('.hero');
     
     // Floating CTA Button - Show after scrolling past hero
-    const floatingCta = document.querySelector('.floating-cta');
+    const floatingCta = null; // Removed
 
     // Consolidated Scroll Listener with RequestAnimationFrame
     let scrollTicking = false;
@@ -284,15 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     heroSection.style.backgroundPositionY = scrollY * 0.3 + 'px';
                 }
 
-                // 3. Floating CTA
-                if (floatingCta && heroSection) {
-                    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-                    if (scrollY > heroBottom) {
-                        floatingCta.classList.add('visible');
-                    } else {
-                        floatingCta.classList.remove('visible');
-                    }
-                }
+                // 3. Floating CTA Removed
 
                 scrollTicking = false;
             });

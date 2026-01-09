@@ -398,6 +398,9 @@ h2.section-title {
     -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
     transition: all 0.3s ease, var(--theme-transition);
+    /* Stabilization */
+    transform: translateZ(0); 
+    will-change: transform;
 }
 
 .header .container {
@@ -1150,38 +1153,7 @@ h2.section-title {
 }
 
 /* Floating CTA Button */
-.floating-cta {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 24px;
-    background: linear-gradient(to right, #06b6d4, #3b82f6);
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    border-radius: 9999px;
-    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.3s ease;
-    will-change: transform, opacity;
-}
-
-.floating-cta.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.floating-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5);
-}
+/* Floating CTA Removed */
 
 /* Exit Intent Popup */
 .exit-popup {
@@ -1828,6 +1800,9 @@ h2.section-title {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
     font-size: 1rem;
+    width: 100%; /* Full width in contact list */
+    justify-content: center;
+    margin-top: 12px;
 }
 
 .contact-cta-btn:hover {
@@ -2172,14 +2147,9 @@ h2.section-title {
         display: inline-flex;
     }
 
-    .contact-calendly {
-        display: none !important; /* Hide the inline column on mobile */
-    }
-    
-    /* Hide the generic 'Book a Consultation' which is redundant here since we have the specific button */
-    .contact-cta-btn {
-        display: none;
-    }
+    /* Fixed visibility: specific button and calendly should be VISIBLE now */
+    /* .contact-calendly { display: none !important; }  <-- REMOVED */
+    /* .contact-cta-btn { display: none; } <-- REMOVED */
 }
 
 /* Drawer Styles (Vaul-like) */
@@ -2296,58 +2266,7 @@ body.drawer-open {
 /* ================================
    MOBILE BOTTOM ACTION BAR
    ================================ */
-.mobile-bottom-bar {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(15, 23, 42, 0.6); /* bg-black/60 equivalent for dark theme */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 16px 20px;
-    z-index: 99999; /* Highest priority */
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-bottom-bar .btn-book {
-    flex: 1;
-    text-align: center;
-    padding: 14px 20px;
-    font-size: 1rem;
-    margin: 0; /* Override any defaults */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mobile-bottom-bar .btn-whatsapp {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #25D366;
-    border-radius: 50%;
-    color: white;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-}
-
-.mobile-bottom-bar .btn-whatsapp:active {
-    transform: scale(0.95);
-}
-
-.mobile-bottom-bar .btn-whatsapp svg {
-    width: 28px;
-    height: 28px;
-    fill: currentColor;
-}
+/* Mobile Bottom Bar Removed */
 
 /* Light Theme Adjustments */
 [data-theme="light"] .mobile-bottom-bar {
@@ -2361,21 +2280,6 @@ body.drawer-open {
 
 /* Mobile Visibility */
 @media (max-width: 768px) {
-    .mobile-bottom-bar {
-        display: flex;
-        padding-bottom: max(16px, env(safe-area-inset-bottom)); /* Safe area for iPhone X+ */
-    }
-
-    /* Adjust body padding so content isn't covered */
-    body {
-        padding-bottom: 100px;
-    }
-
-    /* Hide the floating CTA on mobile to avoid clutter */
-    .floating-cta {
-        display: none !important;
-    }
-    
     /* Ensure Header CTA is definitely hidden (it already is, but just in case) */
     .header .btn-cta {
         display: none !important;
