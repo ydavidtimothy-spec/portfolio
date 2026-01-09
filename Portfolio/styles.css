@@ -633,6 +633,8 @@ h2.section-title {
     grid-template-columns: 1.2fr 0.8fr;
     gap: 80px;
     align-items: center;
+    /* Smooth layout transition (Framer Motion-like layout prop) */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hero-content .eyebrow {
@@ -661,9 +663,13 @@ h2.section-title {
     position: relative;
     border-radius: 24px;
     z-index: 1;
+    /* Prevent layout shift */
+    aspect-ratio: 1 / 1;
+    width: 100%;
     /* Super Saiyan Pulse Animation */
     animation: superSaiyanPulse 4s infinite ease-in-out;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    will-change: transform, box-shadow;
 }
 
 .hero-image:hover {
@@ -1503,6 +1509,18 @@ h2.section-title {
     width: 100%;
 }
 
+.calendly-inline-widget {
+    min-height: 650px;
+    width: 100%;
+    /* Prevent layout jump */
+    aspect-ratio: 0.5; 
+}
+@media (min-width: 768px) {
+    .calendly-inline-widget {
+        aspect-ratio: auto; /* Allow auto on desktop if height is fixed */
+    }
+}
+
 /* Work Experience Timeline */
 .experience-timeline {
     position: relative;
@@ -1623,7 +1641,12 @@ h2.section-title {
 /* Responsive */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem;
+        /* Fluid typography: Min 2.5rem, Preferred 8vw, Max 3.5rem */
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+    }
+
+    .section {
+        padding: 80px 0; /* py-20 */
     }
 
     .hero-container {
@@ -1632,16 +1655,21 @@ h2.section-title {
         display: flex;
         flex-direction: column-reverse; /* Puts image on top in HTML order if needed, or normal flow */
         text-align: center;
-        gap: 3rem;
+        gap: clamp(2rem, 5vw, 4rem); /* Fluid gap */
     }
 
     .hero-image {
-        max-width: 280px; /* Smaller image on mobile */
+        /* Fluid width: Min 200px (iPhone SE), Max 280px */
+        width: clamp(200px, 50vw, 280px);
+        max-width: 280px; 
         margin: 0 auto;
     }
 
     .hero-content p {
+        /* Fluid text size for body copy */
+        font-size: clamp(1rem, 2.5vw, 1.125rem);
         margin: 0 auto 32px;
+        max-width: 90%; /* Prevent edge-to-edge text on wide mobiles */
     }
 
     .nav {
@@ -1687,6 +1715,15 @@ h2.section-title {
 
     .contact-container {
         grid-template-columns: 1fr;
+    }
+
+    .contact-details {
+        align-items: stretch; /* Make pills full width */
+    }
+
+    .contact-pill {
+        justify-content: flex-start; /* Keep text left-aligned for readability */
+        width: 100%;
     }
 
     .timeline {
