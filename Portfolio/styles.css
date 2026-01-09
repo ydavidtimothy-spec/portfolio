@@ -36,23 +36,23 @@
 /* Light Theme */
 /* Light Theme - Clean, Airy, Low Glare */
 [data-theme="light"] {
-    --bg-color: #f1f5f9; /* Slate-100: Not pure white, easier on eyes */
-    --bg-gradient-1: #e0f2fe; /* Sky-100 */
-    --bg-gradient-2: #e2e8f0; /* Slate-200 */
+    --bg-color: #f8fafc; /* Slate-50: Crisp base */
+    --bg-gradient-1: #dbeafe; /* Blue-100: Soft blue accent */
+    --bg-gradient-2: #e0e7ff; /* Indigo-100: Subtle depth */
     --card-bg: rgba(255, 255, 255, 0.7); /* Frosted Glass */
     --card-bg-hover: rgba(255, 255, 255, 0.9);
-    --text-primary: #1e293b; /* Slate-800: Strong but not pitch black */
-    --text-secondary: #475569; /* Slate-600: Good readability */
+    --text-primary: #1e293b; /* Slate-800 */
+    --text-secondary: #475569; /* Slate-600 */
     --accent: #0284c7; /* Sky-600 */
     --accent-glow: rgba(2, 132, 199, 0.2);
     --border: rgba(30, 41, 59, 0.1); /* Slate border */
-    --header-bg: rgba(241, 245, 249, 0.9);
-    --loader-bg: #f1f5f9;
+    --header-bg: rgba(248, 250, 252, 0.9);
+    --loader-bg: #f8fafc;
     --loader-text: #1e293b;
     --loader-subtitle: #64748b;
-    --glow-color-1: rgba(56, 189, 248, 0.15); /* Soft Blue */
-    --glow-color-2: rgba(94, 234, 212, 0.1); /* Teal hint */
-    --nav-overlay-bg: rgba(241, 245, 249, 0.98);
+    --glow-color-1: rgba(14, 165, 233, 0.12); /* Sky-500 (Visible but soft) */
+    --glow-color-2: rgba(99, 102, 241, 0.08); /* Indigo-500 (Subtle) */
+    --nav-overlay-bg: rgba(248, 250, 252, 0.98);
     --shadow-color: rgba(148, 163, 184, 0.2);
 }
 
@@ -660,11 +660,102 @@ h2.section-title {
 .hero-image {
     position: relative;
     border-radius: 24px;
-    overflow: hidden;
-    /* Glowing Border for Profile */
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2),
-        0 20px 50px -10px rgba(56, 189, 248, 0.3);
-    border: none;
+    z-index: 1;
+    /* Super Saiyan Pulse Animation */
+    animation: superSaiyanPulse 4s infinite ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.hero-image:hover {
+    /* Stronger, static glow on hover (Super Saiyan Level 2) */
+    animation: none;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), 
+                0 0 60px rgba(59, 130, 246, 0.6),
+                0 0 90px rgba(56, 189, 248, 0.4);
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+.hero-image:hover::after {
+    /* Maximize aura on hover */
+    opacity: 1;
+    transform: scale(1.15) rotate(10deg);
+    filter: blur(30px);
+    animation: none;
+}
+
+.hero-image img {
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+}
+
+/* Gathering Energy / Particles Effect */
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 160%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, transparent 30%, rgba(56, 189, 248, 0.1) 40%, rgba(59, 130, 246, 0.05) 60%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    animation: auraGather 3s infinite linear;
+}
+
+/* Breathing Outer Aura */
+.hero-image::after {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border-radius: 40px;
+    background: conic-gradient(from 0deg, rgba(56, 189, 248, 0.4), rgba(59, 130, 246, 0.1), rgba(56, 189, 248, 0.4));
+    z-index: -2;
+    filter: blur(25px);
+    opacity: 0.6;
+    animation: auraBreathe 5s infinite alternate ease-in-out;
+}
+
+@keyframes superSaiyanPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2),
+                    0 20px 50px -10px rgba(56, 189, 248, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px 2px rgba(56, 189, 248, 0.6),
+                    0 20px 60px -5px rgba(56, 189, 248, 0.6),
+                    0 0 40px 10px rgba(59, 130, 246, 0.3);
+    }
+}
+
+@keyframes auraGather {
+    0% {
+        transform: translate(-50%, -50%) scale(1.4) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes auraBreathe {
+    0% {
+        transform: scale(0.95) rotate(0deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.1) rotate(5deg);
+        opacity: 0.8;
+    }
 }
 
 /* Sections */
@@ -1536,8 +1627,17 @@ h2.section-title {
     }
 
     .hero-container {
+        /* Stack profile image ON TOP of content for mobile - better UX */
         grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse; /* Puts image on top in HTML order if needed, or normal flow */
         text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-image {
+        max-width: 280px; /* Smaller image on mobile */
+        margin: 0 auto;
     }
 
     .hero-content p {
@@ -1549,12 +1649,14 @@ h2.section-title {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 70%;
+        width: 85%; /* Wider menu for easier tapping */
+        max-width: 300px;
         height: 100vh;
         background-color: var(--card-bg);
-        padding: 80px 40px;
-        transition: 0.3s ease;
+        padding: 80px 30px;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-left: 1px solid var(--border);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
 
     .nav.nav-active {
@@ -1563,7 +1665,19 @@ h2.section-title {
 
     .nav-list {
         flex-direction: column;
-        gap: 24px;
+        gap: 20px;
+        align-items: flex-start; /* Left align for easier reading */
+    }
+
+    .nav-list li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 15px;
+    }
+
+    .nav-list a {
+        font-size: 1.2rem;
+        display: block;
     }
 
     .menu-toggle {
@@ -1577,15 +1691,16 @@ h2.section-title {
 
     .timeline {
         padding-left: 20px;
-        border-left: none;
-        /* simple stack for mobile or keep line but adjust */
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     .timeline-item::before {
         display: none;
         /* simplify for mobile */
     }
-}/* Contact Section Refactor */
+}
+
+/* Contact Section Refactor */
 .contact-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -1596,97 +1711,6 @@ h2.section-title {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
-}
-
-/* Left Column: Contact Info */
-.contact-info {
-    padding-top: 1rem;
-}
-
-.contact-title {
-    text-align: left;
-    margin-bottom: 1.5rem;
-    font-size: 3rem;
-    /* Larger heading */
-    background: linear-gradient(to right, #fff, #94a3b8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.contact-subtitle {
-    text-align: left;
-    margin-bottom: 3rem;
-    font-size: 1.125rem;
-    color: var(--text-secondary);
-    /* Fixed var name if text-secondary exists, else text-color */
-    line-height: 1.6;
-    max-width: 500px;
-}
-
-.contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    color: var(--text-primary);
-    /* Ensuring visibility */
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    /* More visible hover */
-    border-color: rgba(56, 189, 248, 0.3);
-    /* Blue accent border */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.contact-icon-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: rgba(56, 189, 248, 0.1);
-    border-radius: 10px;
-    color: var(--accent);
-    /* Use accent color */
-}
-
-.contact-icon {
-    width: 24px;
-    height: 24px;
-}
-
-.contact-text {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-/* Right Column: Calendly */
-.contact-calendly {
-    position: relative;
-    width: 100%;
-}
-
-.calendly-container {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Media Queries for Contact */
@@ -1705,13 +1729,13 @@ h2.section-title {
     }
 
     .contact-links {
-        align-items: center;
-        /* Center links on mobile */
+        align-items: stretch; /* Full width touch targets */
     }
 
     .contact-item {
         width: 100%;
-        max-width: 400px;
+        max-width: 100%; /* Use full width available */
+        justify-content: center; /* Center content */
     }
 }
 
