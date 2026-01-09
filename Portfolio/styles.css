@@ -401,6 +401,10 @@ h2.section-title {
     /* Stabilization */
     transform: translateZ(0); 
     will-change: transform;
+    /* Safe Area Support */
+    padding-top: calc(20px + env(safe-area-inset-top));
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .header .container {
@@ -553,7 +557,8 @@ h2.section-title {
 /* ... (Existing media queries) ... */
 
 /* Mobile Nav Overlay Improvements */
-@media (max-width: 768px) {
+/* Mobile Nav Overlay Improvements */
+@media (max-width: 1024px) {
     .menu-toggle {
         display: flex;
     }
@@ -1613,7 +1618,7 @@ h2.section-title {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     h1 {
         /* Fluid typography: Min 2.5rem, Preferred 8vw, Max 3.5rem */
         font-size: clamp(2.5rem, 8vw, 3.5rem);
@@ -1646,23 +1651,19 @@ h2.section-title {
         max-width: 90%; /* Prevent edge-to-edge text on wide mobiles */
     }
 
+    /* .nav styles removed to prevent hiding theme/menu toggles. 
+       Mobile menu is handled by targeting .nav-list in the earlier media query. */
     .nav {
-        /* Mobile menu logic usually requires JS to toggle class, making simple version here */
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 85%; /* Wider menu for easier tapping */
-        max-width: 300px;
-        height: 100vh;
-        background-color: var(--card-bg);
-        padding: 80px 30px;
-        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-left: 1px solid var(--border);
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-    }
-
-    .nav.nav-active {
-        right: 0;
+        display: flex;
+        /* Ensure it's not fixed/off-screen */
+        position: relative;
+        right: auto;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        border: none;
     }
 
     .nav-list {
@@ -1873,20 +1874,24 @@ h2.section-title {
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+/* Mobile responsive */
+@media (max-width: 1024px) {
+    /* We want the theme toggle to remain in the header, not fixed at bottom */
     .theme-toggle {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 999;
-        width: 50px;
-        height: 50px;
-        box-shadow: 0 4px 20px var(--shadow-color);
+        position: relative; /* Default back to relative */
+        bottom: auto;
+        right: auto;
+        z-index: 1001; /* Ensure it stays above if needed, but header handles z-index */
+        width: 44px; /* Standard size */
+        height: 44px;
+        box-shadow: none; /* Remove floating shadow */
+        margin-left: auto; /* Push to right if flex container allows */
+        margin-right: 16px; /* Space from menu toggle */
     }
     
     .theme-toggle svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 }
 
