@@ -1,5 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // THEME TOGGLE FUNCTIONALITY
+    // ========================================
+    const themeToggle = document.querySelector('.theme-toggle');
+    const htmlElement = document.documentElement;
+    
+    // Get saved theme from localStorage or default to 'dark'
+    const getSavedTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        // Default to dark theme (as requested)
+        return 'dark';
+    };
+    
+    // Apply theme to document
+    const applyTheme = (theme) => {
+        htmlElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    };
+    
+    // Initialize theme on page load
+    const initTheme = () => {
+        const savedTheme = getSavedTheme();
+        applyTheme(savedTheme);
+    };
+    
+    // Toggle between light and dark
+    const toggleTheme = () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+    };
+    
+    // Initialize theme immediately
+    initTheme();
+    
+    // Add click event to theme toggle button
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    // ========================================
     // Loading Screen with Typewriter Effect
+    // ========================================
     const loaderScreen = document.querySelector('.loader-screen');
     const typewriter = document.querySelector('.typewriter');
     
@@ -285,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // EXIT INTENT FORM - GHL WEBHOOK INTEGRATION
     // ========================================
     // IMPORTANT: Replace the URL below with your GoHighLevel webhook URL
-    const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/EAtoIMKLPmk5lNFYiA3n/webhook-trigger/04b3d86c-0e69-4b55-b31e-6143ecec072d'; // <-- LINE 294: PUT YOUR GHL WEBHOOK HERE
+    const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/EAtoIMKLPmk5lNFYiA3n/webhook-trigger/5259cc05-45a2-4cf3-b8bc-5ca8c5554f5c'; // <-- LINE 294: PUT YOUR GHL WEBHOOK HERE
     
     const exitForm = document.getElementById('exitForm');
     const exitEmailInput = document.getElementById('exitEmail');
@@ -315,8 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         source: 'Portfolio Exit Intent',
                         lead_magnet: 'Automation Checklist',
                         timestamp: new Date().toISOString()
-                    }),
-                    mode: 'no-cors' // GHL webhooks may not return CORS headers
+                    })
                 });
                 
                 // Success - show thank you message
