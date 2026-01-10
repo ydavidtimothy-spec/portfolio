@@ -16,9 +16,38 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     // Apply theme to document
+    // Apply theme to document
     const applyTheme = (theme) => {
         htmlElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
+        
+        // Update Calendly Widget Theme (Dynamic)
+        const calendlyContainer = document.getElementById('calendly-embed-container');
+        if (calendlyContainer) {
+            const baseUrl = "https://calendly.com/ydavidtimothy/30min";
+            const commonParams = "hide_landing_page_details=1&hide_gdpr_banner=1";
+            let themeParams = "";
+
+            if (theme === 'dark') {
+                // Dark Mode: Slate-900 bg, Slate-200 text, Sky-400 primary
+                themeParams = "&background_color=0f172a&text_color=e2e8f0&primary_color=38bdf8";
+            } else {
+                // Light Mode: Slate-50 bg, Slate-800 text, Sky-600 primary
+                themeParams = "&background_color=f8fafc&text_color=1e293b&primary_color=0284c7";
+            }
+
+            const fullUrl = `${baseUrl}?${commonParams}${themeParams}`;
+            
+            // Check if widget is already loaded (iframe) or still waiting (div)
+            const iframe = calendlyContainer.querySelector('iframe');
+            if (iframe) {
+                if (iframe.src !== fullUrl) {
+                    iframe.src = fullUrl;
+                }
+            } else {
+                calendlyContainer.setAttribute('data-url', fullUrl);
+            }
+        }
     };
     
     // Initialize theme on page load
