@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     const themeToggle = document.querySelector('.theme-toggle');
     const htmlElement = document.documentElement;
-    
+
     // Get saved theme from localStorage or default to 'dark'
     const getSavedTheme = () => {
         const savedTheme = localStorage.getItem('theme');
@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Default to dark theme (as requested)
         return 'dark';
     };
-    
+
     // Apply theme to document
     // Apply theme to document
     const applyTheme = (theme) => {
         htmlElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        
+
         // Update Calendly Widget Theme (Dynamic)
         const calendlyContainer = document.getElementById('calendly-embed-container');
         if (calendlyContainer) {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const fullUrl = `${baseUrl}?${commonParams}${themeParams}`;
-            
+
             // Check if widget is already loaded (iframe) or still waiting (div)
             const iframe = calendlyContainer.querySelector('iframe');
             if (iframe) {
@@ -49,34 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
-    
+
     // Initialize theme on page load
     const initTheme = () => {
         const savedTheme = getSavedTheme();
         applyTheme(savedTheme);
     };
-    
+
     // Toggle between light and dark
     const toggleTheme = () => {
         const currentTheme = htmlElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         applyTheme(newTheme);
     };
-    
+
     // Initialize theme immediately
     initTheme();
-    
+
     // Add click event to theme toggle button
     if (themeToggle) {
         themeToggle.addEventListener('click', toggleTheme);
     }
-    
+
     // ========================================
     // Loading Screen with Typewriter Effect
     // ========================================
     const loaderScreen = document.querySelector('.loader-screen');
     const typewriter = document.querySelector('.typewriter');
-    
+
     if (loaderScreen && typewriter) {
         const brandName = 'david.yoro';
         const accentStart = 5; // Index where ".yoro" starts
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Hide cursor after typing completes
                 const cursor = document.querySelector('.cursor');
                 if (cursor) cursor.style.display = 'none';
-                
+
                 // Fade out loader after a brief pause
                 setTimeout(() => {
                     loaderScreen.classList.add('hidden');
@@ -287,10 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll Progress Bar
     const scrollProgress = document.querySelector('.scroll-progress');
-    
+
     // Parallax Effect on Hero Background
     const heroSection = document.querySelector('.hero');
-    
+
     // Floating CTA Button - Show after scrolling past hero
     const floatingCta = null; // Removed
 
@@ -362,23 +362,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // IMPORTANT: Replace the URL below with your GoHighLevel webhook URL
     const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/EAtoIMKLPmk5lNFYiA3n/webhook-trigger/5259cc05-45a2-4cf3-b8bc-5ca8c5554f5c'; // <-- LINE 294: PUT YOUR GHL WEBHOOK HERE
-    
+
     const exitForm = document.getElementById('exitForm');
     const exitEmailInput = document.getElementById('exitEmail');
-    
+
     if (exitForm && exitEmailInput) {
         exitForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             const email = exitEmailInput.value.trim();
             if (!email) return;
-            
+
             // Disable form while submitting
             const submitBtn = exitForm.querySelector('.exit-submit');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-            
+
             try {
                 // Send to GHL Webhook
                 await fetch(GHL_WEBHOOK_URL, {
@@ -393,20 +393,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         timestamp: new Date().toISOString()
                     })
                 });
-                
+
                 // Success - show thank you message
                 exitForm.innerHTML = '<p style="color: #38bdf8; font-weight: 600;">✓ Check your email for the checklist!</p>';
-                
+
                 // Close popup after 2 seconds
                 setTimeout(() => {
                     exitPopup.classList.remove('active');
                 }, 2000);
-                
+
             } catch (error) {
                 console.error('Webhook error:', error);
                 submitBtn.textContent = 'Error - Try Again';
                 submitBtn.disabled = false;
-                
+
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                 }, 2000);
@@ -424,30 +424,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const drawerContent = document.getElementById('drawerContent');
     const calendlyWidget = document.getElementById('calendly-embed-container');
     const drawerHandle = document.querySelector('.drawer-handle-bar');
-    
+
     // Track original parent to move it back if needed
     let originalWidgetParent = calendlyWidget ? calendlyWidget.parentElement : null;
-    
+
     function openDrawer() {
         if (!calendlyDrawer || !calendlyWidget) return;
-        
+
         // Move widget to drawer
         drawerContent.appendChild(calendlyWidget);
-        
+
         // Show drawer
         drawerOverlay.classList.add('active');
         calendlyDrawer.classList.add('active');
         document.body.classList.add('drawer-open');
     }
-    
+
     function closeDrawer() {
         if (!calendlyDrawer) return;
-        
+
         // Hide drawer
         drawerOverlay.classList.remove('active');
         calendlyDrawer.classList.remove('active');
         document.body.classList.remove('drawer-open');
-        
+
         // Move widget back after animation (timeout matching CSS transition)
         setTimeout(() => {
             if (originalWidgetParent && calendlyWidget) {
@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 500);
     }
-    
+
     if (mobileBookBtn) {
         mobileBookBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -463,24 +463,24 @@ document.addEventListener('DOMContentLoaded', () => {
             openDrawer();
         });
     }
-    
+
     if (drawerCloseBtn) {
         drawerCloseBtn.addEventListener('click', closeDrawer);
     }
-    
+
     if (drawerOverlay) {
         drawerOverlay.addEventListener('click', closeDrawer);
     }
-    
+
     // Drag to close logic (Simple version)
     let startY = 0;
     let currentY = 0;
-    
+
     if (drawerHandle && calendlyDrawer) {
         drawerHandle.addEventListener('touchstart', (e) => {
             startY = e.touches[0].clientY;
         }, { passive: true });
-        
+
         drawerHandle.addEventListener('touchmove', (e) => {
             currentY = e.touches[0].clientY;
             const diff = currentY - startY;
@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 calendlyDrawer.style.transform = `translateY(${diff}px)`;
             }
         }, { passive: true });
-        
+
         drawerHandle.addEventListener('touchend', (e) => {
             const diff = currentY - startY;
             // If dragged down more than 100px, close
@@ -509,6 +509,60 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         if (window.innerWidth > 640 && calendlyDrawer && calendlyDrawer.classList.contains('active')) {
             closeDrawer();
+        }
+    });
+
+    // ========================================
+    // PROJECT IMAGE LIGHTBOX
+    // ========================================
+    const lightbox = document.getElementById('projectLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDescription = document.getElementById('lightboxDescription');
+    const lightboxCloseBtn = document.querySelector('.lightbox-close');
+    const lightboxOverlay = document.querySelector('.lightbox-overlay');
+
+    function openLightbox(card) {
+        const img = card.querySelector('.project-image img');
+        const title = card.querySelector('.project-info h3');
+        const psrBlocks = card.querySelectorAll('.psr-block');
+
+        if (!img || !lightbox) return;
+
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightboxTitle.textContent = title ? title.textContent : '';
+
+        // Clone PSR blocks into lightbox description
+        lightboxDescription.innerHTML = '';
+        psrBlocks.forEach(block => {
+            lightboxDescription.appendChild(block.cloneNode(true));
+        });
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Attach click to all project images
+    document.querySelectorAll('.project-card .project-image').forEach(imgWrapper => {
+        imgWrapper.addEventListener('click', () => {
+            const card = imgWrapper.closest('.project-card');
+            if (card) openLightbox(card);
+        });
+    });
+
+    // Close handlers
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+    if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+            closeLightbox();
         }
     });
 
