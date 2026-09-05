@@ -1,6 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/automation-checklist", "destination": "/automation_checklist.html" }
-  ],
-  "cleanUrls": true
+ "rewrites": [
+ { "source": "/automation-checklist", "destination": "/automation_checklist.html" }
+ ],
+ "cleanUrls": true
 }

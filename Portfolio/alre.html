@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>ALRE — Autonomous Lead-to-Revenue Engine | David Yoro</title>
+ <meta name="description"
+ content="A multi-agent automation system that captures, qualifies, and converts leads 24/7. Built with n8n, Telnyx AI, ChatGPT Models, and GoHighLevel.">
+ <link rel="stylesheet" href="alre.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+ rel="stylesheet">
+</head>
+
+<body>
+ <!-- Header -->
+ <header class="header">
+ <nav class="nav">
+ <a href="index.html" class="back-link">
+ <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+ <path
+ d="M10.354 3.146a.5.5 0 0 1 0 .708L6.707 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z" />
+ </svg>
+ Back to Portfolio
+ </a>
+ <a href="mailto:ydavidtimothy@gmail.com" class="nav-cta">Contact Me</a>
+ </nav>
+ </header>
+
+ <main class="main">
+ <!-- Hero -->
+ <section class="hero">
+ <div class="repo-badge">
+ <span class="badge-icon">&#9881;</span>
+ Automation Project
+ </div>
+ <h1 class="title">ALRE</h1>
+ <p class="subtitle">Autonomous Lead-to-Revenue Engine</p>
+
+ <div class="tech-stack">
+ <span class="tech-badge">n8n</span>
+ <span class="tech-badge">Telnyx AI</span>
+ <span class="tech-badge">ChatGPT Models</span>
+ <span class="tech-badge">GoHighLevel</span>
+ <span class="tech-badge">Firecrawl</span>
+ <span class="tech-badge">Apollo</span>
+ </div>
+
+ <p class="pitch">
+ A multi-agent automation system that captures, qualifies, enriches, and converts leads
+ <strong>24/7</strong> — without hiring more staff.
+ </p>
+ </section>
+
+ <!-- Problem -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> The Problem
+ </h2>
+ <div class="problem-grid">
+ <div class="problem-item">
+ <span class="problem-stat">47+</span>
+ <span class="problem-label">hours average response time</span>
+ </div>
+ <div class="problem-item">
+ <span class="problem-stat">50%</span>
+ <span class="problem-label">of leads lost forever</span>
+ </div>
+ <div class="problem-item">
+ <span class="problem-stat">30%</span>
+ <span class="problem-label">only get manual follow-up</span>
+ </div>
+ </div>
+ <div class="problem-text">
+ <p>Business owners know this pain:</p>
+ <ul>
+ <li>Leads come in but nobody's there to answer at 11pm</li>
+ <li>Follow-ups are inconsistent — some get contacted, others don't</li>
+ <li>Manually researching each lead takes hours</li>
+ <li>CRM data is always outdated because nobody updates it</li>
+ <li>By the time someone responds, the lead has already moved on</li>
+ </ul>
+ </div>
+ </section>
+
+ <!-- Solution -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> The Solution
+ </h2>
+ <p class="solution-intro">
+ Specialized AI agents that work together autonomously — handling the entire lead journey
+ from first contact to booked meeting.
+ </p>
+
+ <div class="agent-flow">
+ <div class="flow-step">
+ <div class="flow-icon">&#128222;</div>
+ <span class="flow-label">Lead Captured</span>
+ </div>
+ <div class="flow-arrow">&#8594;</div>
+ <div class="flow-step">
+ <div class="flow-icon">&#128269;</div>
+ <span class="flow-label">Enriched</span>
+ </div>
+ <div class="flow-arrow">&#8594;</div>
+ <div class="flow-step">
+ <div class="flow-icon">&#9989;</div>
+ <span class="flow-label">Qualified</span>
+ </div>
+ <div class="flow-arrow">&#8594;</div>
+ <div class="flow-step">
+ <div class="flow-icon">&#128233;</div>
+ <span class="flow-label">Followed Up</span>
+ </div>
+ <div class="flow-arrow">&#8594;</div>
+ <div class="flow-step">
+ <div class="flow-icon">&#128197;</div>
+ <span class="flow-label">Meeting Booked</span>
+ </div>
+ </div>
+
+ <div class="solution-promise">
+ <p>AI handles the work. You focus on closing deals.</p>
+ </div>
+ </section>
+
+ <!-- Architecture -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Architecture
+ </h2>
+
+ <!-- Visual Lavish Architecture Standard -->
+ <div class="arch-visual-canvas">
+     <!-- Tier 1: Orchestration -->
+     <div class="arch-v-tier">
+         <div class="arch-v-tier-badge">Tier 1: Central Orchestration Engine</div>
+         <div class="arch-v-grid">
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">n8n Core Manager</div>
+                 <div class="arch-v-node-sub">Lead intake coordination & state persistence</div>
+                 <span class="arch-v-node-badge">State Machine</span>
+             </div>
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Router & Retry Array</div>
+                 <div class="arch-v-node-sub">Automated error recovery & failover queues</div>
+                 <span class="arch-v-node-badge">Zero Data Loss</span>
+             </div>
+         </div>
+     </div>
+
+     <div class="arch-flow-down">↓ Dispatches to Autonomous Swarm ↓</div>
+
+     <!-- Tier 2: Agent Swarm -->
+     <div class="arch-v-tier">
+         <div class="arch-v-tier-badge">Tier 2: Specialized Agent Swarm</div>
+         <div class="arch-v-grid">
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Voice Agent</div>
+                 <div class="arch-v-node-sub">Telnyx AI + Twilio SIP outbound qualification</div>
+                 <span class="arch-v-node-badge">740ms Latency</span>
+             </div>
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Enrichment Agent</div>
+                 <div class="arch-v-node-sub">Firecrawl + Apollo B2B persona matching</div>
+                 <span class="arch-v-node-badge">95% Time Saved</span>
+             </div>
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Chat & Support</div>
+                 <div class="arch-v-node-sub">Context-aware Gemini / OpenAI responder</div>
+                 <span class="arch-v-node-badge">90% Auto-Reply</span>
+             </div>
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Scheduling Agent</div>
+                 <div class="arch-v-node-sub">Live warm transfer & automated calendar booking</div>
+                 <span class="arch-v-node-badge">Instant Booking</span>
+             </div>
+         </div>
+     </div>
+
+     <div class="arch-flow-down">↓ Synchronizes to Systems of Record ↓</div>
+
+     <!-- Tier 3: Data & CRM -->
+     <div class="arch-v-tier">
+         <div class="arch-v-tier-badge">Tier 3: Enterprise Data & CRM Persistence</div>
+         <div class="arch-v-grid">
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">GoHighLevel (GHL)</div>
+                 <div class="arch-v-node-sub">Pipeline stages, contact tags, SMS recovery</div>
+                 <span class="arch-v-node-badge">Primary CRM</span>
+             </div>
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Supabase (PostgreSQL)</div>
+                 <div class="arch-v-node-sub">Call transcripts, telemetry, audit logs</div>
+                 <span class="arch-v-node-badge">14ms Cache</span>
+             </div>
+             <div class="arch-v-node">
+                 <div class="arch-v-node-title">Google Sheets / BI</div>
+                 <div class="arch-v-node-sub">Executive metrics & live KPI reporting</div>
+                 <span class="arch-v-node-badge">Real-time KPI</span>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <!-- Collapsible ASCII Blueprint (No Removal Rule) -->
+ <details class="code-details">
+     <summary>View ASCII Architecture Blueprint</summary>
+     <pre class="code-block architecture">
+┌─────────────────────────────────────────────────────────────────┐
+│ ORCHESTRATION LAYER │
+│ (n8n Workflow Engine) │
+├─────────────────────────────────────────────────────────────────┤
+│ ┌─────────────────────────────────────────────────────────┐ │
+│ │ Central Workflow Manager │ │
+│ │ • Lead intake coordination │ │
+│ │ • Agent handoff logic │ │
+│ │ • Error handling & retries │ │
+│ │ • State persistence │ │
+│ └─────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────┤
+│ AGENT LAYER │
+│ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌──────┐ │
+│ │ Voice │ │ Chat │ │ Enrich │ │Schedule │ │Retain│ │
+│ │ Agent │ │ Agent │ │ Agent │ │ Agent │ │ Agent│ │
+│ └─────────┘ └─────────┘ └─────────┘ └─────────┘ └──────┘ │
+├─────────────────────────────────────────────────────────────────┤
+│ DATA & CRM LAYER │
+│ GoHighLevel │ Supabase │ Google Sheets │
+└─────────────────────────────────────────────────────────────────┘</pre>
+ </details>
+ </section>
+
+ <!-- The Agents -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> The Agents
+ </h2>
+
+ <!-- Voice Agent -->
+ <div class="agent-card">
+ <div class="agent-header">
+ <span class="agent-icon">&#127911;</span>
+ <h3 class="agent-name">Voice Agent</h3>
+ <span class="agent-tech">Telnyx AI</span>
+ </div>
+ <div class="agent-content">
+ <div class="agent-description">
+ <p><strong>Handles:</strong> Inbound/outbound phone calls 24/7</p>
+ <p>Answers calls instantly, qualifies leads through natural conversation, and schedules meetings
+ without human intervention.</p>
+ </div>
+ <div class="agent-features">
+ <span class="feature-tag">24/7 Availability</span>
+ <span class="feature-tag">Natural Conversation</span>
+ <span class="feature-tag">Instant Qualification</span>
+ <span class="feature-tag">Calendar Booking</span>
+ </div>
+ <div class="prompt-framework">
+ <h4>Prompt Framework</h4>
+ <pre class="code-snippet">
+// Voice Agent Qualification Flow
+1. Greeting: "Hi, thanks for calling [Company]. 
+ How can I help you today?"
+
+2. Qualify: "Great! Before I connect you, 
+ can I ask a few quick questions?"
+
+3. Budget: "What's your approximate budget 
+ for [service]?"
+
+4. Timeline: "When are you looking to get started?"
+
+5. Authority: "Are you the decision-maker 
+ or should I expect someone else to join?"
+
+6. Next Step: "Perfect. Let me send you a 
+ calendar link to schedule a proper call."</pre>
+ </div>
+ </div>
+ </div>
+
+ <!-- Chat Agent -->
+ <div class="agent-card">
+ <div class="agent-header">
+ <span class="agent-icon">&#128172;</span>
+ <h3 class="agent-name">Chat Agent</h3>
+ <span class="agent-tech">ChatGPT Models (OpenAI)</span>
+ </div>
+ <div class="agent-content">
+ <div class="agent-description">
+ <p><strong>Handles:</strong> Website visitors, FAQ, lead qualification</p>
+ <p>Engages website visitors in real-time, answers questions, and captures contact information
+ for follow-up.</p>
+ </div>
+ <div class="agent-features">
+ <span class="feature-tag">Real-time Chat</span>
+ <span class="feature-tag">FAQ Automation</span>
+ <span class="feature-tag">Lead Capture</span>
+ <span class="feature-tag">CRM Update</span>
+ </div>
+ <div class="prompt-framework">
+ <h4>Prompt Framework</h4>
+ <pre class="code-snippet">
+// Chat Agent Response Logic
+IF message contains greeting:
+ → Send welcome message + value prop
+ → Ask discovery question
+
+IF message contains pricing question:
+ → Provide general range
+ → Offer to schedule call for exact quote
+ → Capture contact for follow-up
+
+IF message contains booking intent:
+ → Send calendar link
+ → Create CRM task
+ → Trigger SMS confirmation
+
+IF message is objection:
+ → Use objection handler library
+ → Offer alternative next step
+ → Log for human review if unresolved</pre>
+ </div>
+ </div>
+ </div>
+
+ <!-- Enrichment Agent -->
+ <div class="agent-card">
+ <div class="agent-header">
+ <span class="agent-icon">&#128269;</span>
+ <h3 class="agent-name">Enrichment Agent</h3>
+ <span class="agent-tech">Firecrawl + Apollo</span>
+ </div>
+ <div class="agent-content">
+ <div class="agent-description">
+ <p><strong>Handles:</strong> Research, data appending, lead scoring</p>
+ <p>Automatically researches incoming leads, appends company data, and scores leads based on fit.
+ </p>
+ </div>
+ <div class="agent-features">
+ <span class="feature-tag">Company Research</span>
+ <span class="feature-tag">Data Enrichment</span>
+ <span class="feature-tag">Lead Scoring</span>
+ <span class="feature-tag">Intent Detection</span>
+ </div>
+ <div class="prompt-framework">
+ <h4>Data Points Captured</h4>
+ <pre class="code-snippet">
+// Enrichment Data Structure
+{
+ "company": {
+ "name": "...",
+ "website": "...",
+ "industry": "...",
+ "employee_count": "...",
+ "revenue_estimate": "...",
+ "tech_stack": ["...", "..."],
+ "linkedin_url": "...",
+ "recent_news": ["...", "..."]
+ },
+ "contact": {
+ "job_title": "...",
+ "linkedin_url": "...",
+ "email_verified": true,
+ "phone_available": true
+ },
+ "lead_score": 85, // 0-100
+ "intent_signals": ["pricing_page", "demo_requested"]
+}</pre>
+ </div>
+ </div>
+ </div>
+
+ <!-- Scheduler Agent -->
+ <div class="agent-card">
+ <div class="agent-header">
+ <span class="agent-icon">&#128197;</span>
+ <h3 class="agent-name">Scheduler Agent</h3>
+ <span class="agent-tech">Calendly + GHL</span>
+ </div>
+ <div class="agent-content">
+ <div class="agent-description">
+ <p><strong>Handles:</strong> Appointment booking, reminders, rescheduling</p>
+ <p>Manages calendar availability, sends booking links, and handles the entire meeting lifecycle.
+ </p>
+ </div>
+ <div class="agent-features">
+ <span class="feature-tag">Auto Booking</span>
+ <span class="feature-tag">Multi-channel Reminders</span>
+ <span class="feature-tag">Rescheduling</span>
+ <span class="feature-tag">No-show Follow-up</span>
+ </div>
+ <div class="prompt-framework">
+ <h4>Reminder Sequence</h4>
+ <pre class="code-snippet">
+// Scheduler Reminder Flow
+T+0 minutes: Confirmation SMS + Calendar invite
+T+48 hours: Reminder SMS "See you in 2 days!"
+T+24 hours: Reminder SMS + Email
+T+2 hours: Final reminder SMS "Heading out soon?"
+T+15 minutes: If no-show → Trigger recovery sequence
+ → SMS: "Missed you! Reschedule?"
+ → Offer new timeslot
+ → Update CRM status</pre>
+ </div>
+ </div>
+ </div>
+
+ <!-- Retainer Agent -->
+ <div class="agent-card">
+ <div class="agent-header">
+ <span class="agent-icon">&#128170;</span>
+ <h3 class="agent-name">Retainer Agent</h3>
+ <span class="agent-tech">GHL + Supabase</span>
+ </div>
+ <div class="agent-content">
+ <div class="agent-description">
+ <p><strong>Handles:</strong> Customer success, retention, re-engagement</p>
+ <p>Monitors customer health, sends check-ins, and triggers re-engagement for dormant accounts.
+ </p>
+ </div>
+ <div class="agent-features">
+ <span class="feature-tag">Check-in Automation</span>
+ <span class="feature-tag">Churn Prevention</span>
+ <span class="feature-tag">Renewal Reminders</span>
+ <span class="feature-tag">Upsell Triggers</span>
+ </div>
+ <div class="prompt-framework">
+ <h4>Retention Timeline</h4>
+ <pre class="code-snippet">
+// Retainer Agent Schedule
+Day 0: Welcome + Onboarding sequence
+Day 7: Check-in "How's it going?"
+Day 30: First success milestone
+Day 60: Usage review + Tips
+Day 90: Quarterly check-in
+Day 180: 6-month review + Renewal reminder
+Day 270: Pre-renewal outreach
+Day 365: Renewal + Upgrade offer
+
+// Dormant triggers (no engagement for X days)
+// → Re-engagement campaign with special offer</pre>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Results -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Results
+ </h2>
+ <div class="results-grid">
+ <div class="result-card">
+ <span class="result-metric">25s</span>
+ <span class="result-label">Response Time</span>
+ <span class="result-compare">vs 47+ hours</span>
+ </div>
+ <div class="result-card">
+ <span class="result-metric">3x</span>
+ <span class="result-label">Lead Conversion</span>
+ <span class="result-compare">vs 5-10% average</span>
+ </div>
+ <div class="result-card">
+ <span class="result-metric">100%</span>
+ <span class="result-label">Follow-up Rate</span>
+ <span class="result-compare">vs 30% manual</span>
+ </div>
+ <div class="result-card">
+ <span class="result-metric">85%</span>
+ <span class="result-label">Admin Time Saved</span>
+ <span class="result-compare">vs 15-20 hrs/week</span>
+ </div>
+ </div>
+ </section>
+
+ <!-- How It Works -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> How It Works
+ </h2>
+ <div class="workflow-steps">
+ <div class="workflow-step">
+ <span class="step-number">01</span>
+ <div class="step-content">
+ <h4>Lead Comes In</h4>
+ <p>Form submission, phone call, website chat, social media — any source. Webhook captures it
+ instantly.</p>
+ </div>
+ </div>
+ <div class="workflow-step">
+ <span class="step-number">02</span>
+ <div class="step-content">
+ <h4>AI Captures & Deduplicates</h4>
+ <p>System checks for existing contacts, creates new record, and starts the journey timeline.</p>
+ </div>
+ </div>
+ <div class="workflow-step">
+ <span class="step-number">03</span>
+ <div class="step-content">
+ <h4>Agents Research Automatically</h4>
+ <p>Enrichment agent scrapes company website, finds LinkedIn profile, appends contact data.</p>
+ </div>
+ </div>
+ <div class="workflow-step">
+ <span class="step-number">04</span>
+ <div class="step-content">
+ <h4>Lead Gets Qualified</h4>
+ <p>Based on budget, timeline, authority, and need. Hot leads go to priority queue.</p>
+ </div>
+ </div>
+ <div class="workflow-step">
+ <span class="step-number">05</span>
+ <div class="step-content">
+ <h4>Personalized Follow-up</h4>
+ <p>SMS, email, or voice — whatever the lead prefers. Content tailored to their
+ industry/situation.</p>
+ </div>
+ </div>
+ <div class="workflow-step">
+ <span class="step-number">06</span>
+ <div class="step-content">
+ <h4>Meeting Gets Booked</h4>
+ <p>Calendar link sent, appointment confirmed, reminders scheduled. Zero manual coordination.</p>
+ </div>
+ </div>
+ <div class="workflow-step">
+ <span class="step-number">07</span>
+ <div class="step-content">
+ <h4>CRM Stays Updated</h4>
+ <p>Every interaction logged, every status change recorded. You have full visibility.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Who It's For -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Who This Is For
+ </h2>
+ <div class="use-cases">
+ <div class="use-case">
+ <span class="use-case-icon">&#129336;</span>
+ <h4>Fitness Studios</h4>
+ <p>High inquiry volume, trial leads ghosting, member retention challenges. ALRE handles the
+ follow-up while you focus on training.</p>
+ </div>
+ <div class="use-case">
+ <span class="use-case-icon">&#127970;</span>
+ <h4>Marketing Agencies</h4>
+ <p>Slow response times killing conversion, CRM data incomplete, follow-up inconsistent. ALRE ensures
+ no lead falls through.</p>
+ </div>
+ <div class="use-case">
+ <span class="use-case-icon">&#128187;</span>
+ <h4>SaaS Companies</h4>
+ <p>Long sales cycles, demo no-shows, churn happening silently. ALRE keeps prospects engaged until
+ they're ready to buy.</p>
+ </div>
+ <div class="use-case">
+ <span class="use-case-icon">&#128200;</span>
+ <h4>Service Businesses</h4>
+ <p>Manual booking, appointment reminders forgotten, rebooking rate low. ALRE automates the entire
+ client lifecycle.</p>
+ </div>
+ </div>
+ </section>
+
+ <!-- Services -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Services Offered
+ </h2>
+ <div class="services-list">
+ <div class="service-item">
+ <span class="service-icon">&#9881;</span>
+ <div class="service-info">
+ <h4>Multi-Agent System Design</h4>
+ <p>Architecture planning, agent role definition, communication protocols, and integration
+ strategy.</p>
+ </div>
+ </div>
+ <div class="service-item">
+ <span class="service-icon">&#127911;</span>
+ <div class="service-info">
+ <h4>AI Voice Agent Setup</h4>
+ <p>Telnyx AI or VAPI integration, prompt engineering, call flows, and CRM synchronization.</p>
+ </div>
+ </div>
+ <div class="service-item">
+ <span class="service-icon">&#128172;</span>
+ <div class="service-info">
+ <h4>AI Chatbot Development</h4>
+ <p>Website chat widget, ChatGPT Models/Claude integration, FAQ training, and lead capture flows.</p>
+ </div>
+ </div>
+ <div class="service-item">
+ <span class="service-icon">&#128269;</span>
+ <div class="service-info">
+ <h4>Lead Enrichment & Scoring</h4>
+ <p>Firecrawl + Apollo integration, custom scoring models, data quality automation.</p>
+ </div>
+ </div>
+ <div class="service-item">
+ <span class="service-icon">&#128200;</span>
+ <div class="service-info">
+ <h4>CRM Automation & Integration</h4>
+ <p>GoHighLevel, HubSpot, or custom CRM setup, pipeline design, and workflow automation.</p>
+ </div>
+ </div>
+ <div class="service-item">
+ <span class="service-icon">&#127916;</span>
+ <div class="service-info">
+ <h4>Workflow Orchestration</h4>
+ <p>n8n, Make, or Zapier workflows, error handling, monitoring dashboards, and optimization.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Pricing -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Investment
+ </h2>
+ <div class="pricing-intro">
+ <p>Every business is different. Here's a general guide to what this type of system costs:</p>
+ </div>
+ <div class="pricing-grid">
+ <div class="pricing-tier">
+ <h4 class="tier-name">Full ALRE System</h4>
+ <div class="tier-price">
+ <span class="price-range">$5,000 — $12,000</span>
+ <span class="price-note">One-time build</span>
+ </div>
+ <ul class="tier-features">
+ <li>All 5 AI agents configured</li>
+ <li>Full CRM integration</li>
+ <li>Multi-channel follow-up</li>
+ <li>Analytics dashboard</li>
+ <li>Documentation & SOPs</li>
+ <li>1-2 months development</li>
+ </ul>
+ </div>
+ <div class="pricing-tier featured">
+ <h4 class="tier-name">Monthly Retainer</h4>
+ <div class="tier-price">
+ <span class="price-range">$300 — $800</span>
+ <span class="price-note">Per month</span>
+ </div>
+ <ul class="tier-features">
+ <li>System monitoring</li>
+ <li>Performance optimization</li>
+ <li>Prompt updates</li>
+ <li>Bug fixes & troubleshooting</li>
+ <li>Monthly reporting</li>
+ <li>Priority support</li>
+ </ul>
+ </div>
+ </div>
+ <div class="pricing-note">
+ <p>Need just one component? Let's discuss. Pricing varies based on complexity, integrations, and
+ customization level.</p>
+ </div>
+ </section>
+
+ <!-- Tech Stack Reference -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Tech Stack
+ </h2>
+ <div class="stack-grid">
+ <div class="stack-category">
+ <h4>Orchestration</h4>
+ <div class="stack-items">
+ <span class="stack-item">n8n</span>
+ <span class="stack-item">Make</span>
+ <span class="stack-item">Zapier</span>
+ </div>
+ </div>
+ <div class="stack-category">
+ <h4>AI Voice</h4>
+ <div class="stack-items">
+ <span class="stack-item">Telnyx AI</span>
+ <span class="stack-item">VAPI</span>
+ <span class="stack-item">Twilio</span>
+ </div>
+ </div>
+ <div class="stack-category">
+ <h4>AI Chat</h4>
+ <div class="stack-items">
+ <span class="stack-item">ChatGPT Models</span>
+ <span class="stack-item">Claude</span>
+ <span class="stack-item">GPT-4</span>
+ </div>
+ </div>
+ <div class="stack-category">
+ <h4>CRM</h4>
+ <div class="stack-items">
+ <span class="stack-item">GoHighLevel</span>
+ <span class="stack-item">HubSpot</span>
+ <span class="stack-item">Salesforce</span>
+ </div>
+ </div>
+ <div class="stack-category">
+ <h4>Data</h4>
+ <div class="stack-items">
+ <span class="stack-item">Firecrawl</span>
+ <span class="stack-item">Apollo</span>
+ <span class="stack-item">Supabase</span>
+ </div>
+ </div>
+ <div class="stack-category">
+ <h4>Communication</h4>
+ <div class="stack-items">
+ <span class="stack-item">Twilio</span>
+ <span class="stack-item">GHL SMS</span>
+ <span class="stack-item">Calendly</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Common Questions
+ </h2>
+ <div class="faq-list">
+ <div class="faq-item">
+ <h4>How long does it take to build?</h4>
+ <p>Full system: 1-2 months depending on complexity. Individual agents: 3-5 days each.</p>
+ </div>
+ <div class="faq-item">
+ <h4>What if I already have a CRM?</h4>
+ <p>We integrate with it. GoHighLevel, HubSpot, Salesforce, Pipedrive — whatever you're using.</p>
+ </div>
+ <div class="faq-item">
+ <h4>Can I start with one agent?</h4>
+ <p>Absolutely. Many clients start with just a voice agent or chat bot and expand later.</p>
+ </div>
+ <div class="faq-item">
+ <h4>What happens if AI makes a mistake?</h4>
+ <p>Built-in error handling, retry logic, and human escalation triggers. Nothing goes unnoticed.</p>
+ </div>
+ <div class="faq-item">
+ <h4>Is my data secure?</h4>
+ <p>All integrations use encrypted connections. Data stays in your CRM/DB. Nothing stored on
+ third-party servers.</p>
+ </div>
+ </div>
+ </section>
+
+ <!-- CTA -->
+ <section class="section cta-section">
+ <h2 class="section-title">
+ <span class="hash">#</span> Let's Build This
+ </h2>
+ <p class="cta-intro">
+ Ready to stop losing leads? Let's discuss how ALRE can work for your business.
+ </p>
+ <div class="cta-buttons">
+ <a href="mailto:ydavidtimothy@gmail.com" class="cta-button primary">
+ <span class="cta-icon">&#9993;</span>
+ Email Me
+ </a>
+ <a href="https://calendly.com/ydavidtimothy/30min" target="_blank" class="cta-button secondary">
+ <span class="cta-icon">&#128197;</span>
+ Book a Call
+ </a>
+ </div>
+ <div class="cta-contact">
+ <p>Or reach out directly:</p>
+ <a href="mailto:ydavidtimothy@gmail.com">ydavidtimothy@gmail.com</a>
+ <span class="separator">|</span>
+ <a href="tel:+639639759929">+63 963 975 9929</a>
+ </div>
+ </section>
+ </main>
+
+ <!-- Footer -->
+ <footer class="footer">
+ <div class="footer-content">
+ <a href="index.html" class="footer-link">&#8592; Back to Portfolio</a>
+ <span class="footer-divider">|</span>
+ <a href="mailto:ydavidtimothy@gmail.com" class="footer-link">Contact</a>
+ </div>
+ <p class="footer-note">
+ This system design is available for custom implementation.<br>
+ <a href="mailto:ydavidtimothy@gmail.com">Contact me</a> to discuss your needs.
+ </p>
+ </footer>
+</body>
+
+</html>
