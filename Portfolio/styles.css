@@ -295,6 +295,11 @@ h4 {
 h1 {
     font-size: 4rem;
     margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.hero-title-static {
+    display: block;
     background: linear-gradient(to right, #ffffff, #94a3b8);
     -webkit-background-clip: text;
     background-clip: text;
@@ -316,10 +321,13 @@ h2.section-title {
 
 /* Rotating Words Animation */
 .rotating-words {
-    display: inline-block;
+    display: block;
     position: relative;
-    min-width: 300px;
+    height: 1.15em;
+    min-height: 1.15em;
+    line-height: 1.15;
     text-align: left;
+    margin-top: 4px;
 }
 
 .rotating-words .word {
@@ -327,8 +335,10 @@ h2.section-title {
     top: 0;
     left: 0;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
     background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -336,13 +346,18 @@ h2.section-title {
     white-space: nowrap;
 }
 
-.rotating-words .word:first-child {
-    position: relative;
-}
-
 .rotating-words .word.active {
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     transform: translateY(0);
+}
+
+.rotating-words .word.exit {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-16px);
 }
 
 /* Buttons */
@@ -1925,6 +1940,10 @@ h2.section-title {
 
 /* H1 gradient fix for light mode */
 [data-theme="light"] h1 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .hero-title-static {
     background: linear-gradient(to right, #0f172a, #475569);
     -webkit-background-clip: text;
     background-clip: text;

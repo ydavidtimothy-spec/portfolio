@@ -248,9 +248,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = 0;
 
         setInterval(() => {
-            words[currentIndex].classList.remove('active');
+            const prevWord = words[currentIndex];
+            prevWord.classList.remove('active');
+            prevWord.classList.add('exit');
+
             currentIndex = (currentIndex + 1) % words.length;
-            words[currentIndex].classList.add('active');
+            const nextWord = words[currentIndex];
+            nextWord.classList.remove('exit');
+            nextWord.classList.add('active');
+
+            setTimeout(() => {
+                prevWord.classList.remove('exit');
+            }, 500);
         }, 3000); // Change word every 3 seconds
     }
 
@@ -291,8 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax Effect on Hero Background
     const heroSection = document.querySelector('.hero');
 
-    // Floating CTA Button - Show after scrolling past hero
-    const floatingCta = null; // Removed
 
     // Consolidated Scroll Listener with RequestAnimationFrame
     let scrollTicking = false;
@@ -490,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        drawerHandle.addEventListener('touchend', (e) => {
+        drawerHandle.addEventListener('touchend', () => {
             const diff = currentY - startY;
             // If dragged down more than 100px, close
             if (diff > 100) {
